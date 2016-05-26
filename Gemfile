@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'figaro'
 gem 'pry'
 
