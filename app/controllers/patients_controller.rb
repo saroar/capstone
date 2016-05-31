@@ -1,18 +1,21 @@
 class PatientsController < ApplicationController
   def index
-    @patients = Patient.all
+    @patients = policy_scope(Patient)
   end
 
   def show
     @patient = Patient.find(params[:id])
+    authorize @patient
   end
 
   def new
     @patient = Patient.new
+    authorize @patient
   end
   
   def create
     @patient = Patient.new(patient_params)
+    authorize @patient
     if @patient.save
       flash[:notice] = "#{@patient.name} was saved as a patient."
       redirect_to [@patient]
@@ -24,10 +27,12 @@ class PatientsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:id])
+    authorize @patient
   end
   
   def update
     @patient = Patient.find(params[:id])
+    authorize @patient
     if @patient.update(patient_params)
       flash[:notice] = "#{@patient.name}'s information was updated."
       redirect_to [@patient]
