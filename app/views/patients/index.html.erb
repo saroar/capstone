@@ -1,0 +1,4 @@
+<h1>My Patients</h1>
+<% @patients.each do |patient| %>
+    <%= link_to patient.name, [patient] %>
+<% end %>

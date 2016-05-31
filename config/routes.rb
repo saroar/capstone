@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :patients
+
   devise_for :caretakers
   get 'welcome/index'
 
