@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :teams
 
-  devise_for :caretakers
   get 'welcome/index'
 
   get 'welcome/about'

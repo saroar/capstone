@@ -1,12 +1,11 @@
-class DeviseCreateCaretakers < ActiveRecord::Migration
+class DeviseCreateUsers < ActiveRecord::Migration
   def change
-    create_table :caretakers do |t|
-      
-      ## Customization
-      t.string :name
+    create_table :users do |t|
       ## Database authenticatable
+      t.string :name
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :role
 
       ## Recoverable
       t.string   :reset_password_token
@@ -37,9 +36,9 @@ class DeviseCreateCaretakers < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :caretakers, :email,                unique: true
-    add_index :caretakers, :reset_password_token, unique: true
-    # add_index :caretakers, :confirmation_token,   unique: true
-    # add_index :caretakers, :unlock_token,         unique: true
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    # add_index :users, :confirmation_token,   unique: true
+    # add_index :users, :unlock_token,         unique: true
   end
 end
