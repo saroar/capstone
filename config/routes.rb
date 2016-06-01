@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :patients
+  resources :teams
 
   devise_for :caretakers
   get 'welcome/index'

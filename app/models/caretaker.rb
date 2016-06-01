@@ -5,5 +5,5 @@ class Caretaker < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   
   has_many :patientcaretakers, dependent: :destroy
-  has_many :patients, through: :patientcaretakers
+  has_many :teams, through: :patientcaretakers
 end

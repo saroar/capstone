@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :patient do
+  factory :team do
     name "MyString"
     age 1
     address "MyString"
