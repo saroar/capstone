@@ -10,7 +10,7 @@ class TeamPolicy < ApplicationPolicy
     end
     
     def show?
-        team.caretakers.include?(user)
+        team.users.include?(user)
     end
     
     def edit?
@@ -22,19 +22,21 @@ class TeamPolicy < ApplicationPolicy
     end
     
     def destroy?
-        team.caretaker == user || user.admin?
+        team.user == user || user.admin?
     end
     
     class Scope < Scope
-        teams = []
-        if user && user.admin?
-            teams = scope.all
-        else
-            teams.each do |team|
-                teams << team if team.caretakers.include?(user)
-            end
+        def resolve
+            teams = []
+                if user && user.admin?
+                    teams = scope.all
+                else
+                    teams.each do |team|
+                        teams << team if team.users.include?(user)
+                    end
+                end
+            teams
         end
-        teams
     end
         
 end

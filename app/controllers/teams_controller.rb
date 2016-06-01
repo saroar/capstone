@@ -1,4 +1,4 @@
-class PatientsController < ApplicationController
+class TeamsController < ApplicationController
   def index
     @teams = policy_scope(Team)
   end
