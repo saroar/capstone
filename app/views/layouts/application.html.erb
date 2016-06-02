@@ -9,6 +9,28 @@
 <body>
 <div class="container">
   <%= render partial: 'shared/flashes' %>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "About", about_path %></li>
+      <% if current_user %>
+        <li><%= link_to "My Teams", teams_path %></li>
+        <li><%= link_to "New Team", new_team_path %></li>
+      <% end %>
+      <div class="pull-right user-info">
+        <% if current_user %>
+          Hello <%= display(current_user) %>!
+          <%= link_to edit_user_registration_path(current_user), class: 'btn btn-primary btn-sm' do %>
+            <span class="glyphicon glyphicon-user"</span>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %>
+            <span class="glyphicon glyphicon-log-out"></span>
+          <% end %>
+        <% else %>
+          <%= link_to "Sign In",  new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %>
+        <% end %>
+      </div>
+    </ul>
   <%= yield %>
 </div>
 
