@@ -15,6 +15,7 @@ class TeamsController < ApplicationController
   
   def create
     @team = Team.new(team_params)
+    @team.user_id = User.find_by_email(params[:email])
     authorize @team
     if @team.save
       flash[:notice] = "#{@team.name} was saved as a care team."
