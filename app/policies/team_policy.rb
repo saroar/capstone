@@ -5,8 +5,8 @@ class TeamPolicy < ApplicationPolicy
         user.present?
     end
     
-    def new?
-        create?
+    def create?
+        new?
     end
     
     def show?
@@ -28,9 +28,9 @@ class TeamPolicy < ApplicationPolicy
     class Scope < Scope
         def resolve
             teams = []
-                if user && user.admin?
-                    teams = scope.all
-                else
+                if user 
+                #     teams = scope.all
+                # else
                     teams.each do |team|
                         teams << team if team.users.include?(user)
                     end

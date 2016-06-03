@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
          
   has_many :teams_users, dependent: :destroy
   has_many :teams, through: :teams_users
+  # has_one :team, as: :patient
 end
