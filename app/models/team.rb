@@ -1,5 +1,5 @@
 class Team < ActiveRecord::Base
-    has_many :teams_users, dependent: :destroy
-    has_many :caretakers, through: :teams_users, source: :user
+    has_many :teammates, dependent: :destroy
+    has_many :caretakers, through: :teammates, source: :user
     belongs_to :patient
 end

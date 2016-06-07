@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
-  has_many :teams_users, dependent: :destroy
-  has_many :teams, through: :teams_users
+  has_many :teammates, dependent: :destroy
+  has_many :teams, through: :teammates
   has_one :patient
 end

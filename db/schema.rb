@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606234502) do
+ActiveRecord::Schema.define(version: 20160607153744) do
 
   create_table "patients", force: :cascade do |t|
     t.string   "name"
@@ -24,26 +24,19 @@ ActiveRecord::Schema.define(version: 20160606234502) do
 
   add_index "patients", ["user_id"], name: "index_patients_on_user_id"
 
-  create_table "teams", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.string   "address"
+  create_table "teammates", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "team_id"
     t.integer  "user_id"
   end
 
-  add_index "teams", ["user_id"], name: "index_teams_on_user_id"
-
-  create_table "teams_users", force: :cascade do |t|
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id_id"
-    t.integer  "team_id_id"
+    t.integer  "patient_id"
   end
-
-  add_index "teams_users", ["team_id_id"], name: "index_teams_users_on_team_id_id"
-  add_index "teams_users", ["user_id_id"], name: "index_teams_users_on_user_id_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
