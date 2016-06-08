@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :teams
+  
+  resources :teams do
+    resources :teammates
+    resources :patients
+  end
+  
+  
+  
 
   get 'about' => 'welcome#about'
   
