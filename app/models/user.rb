@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   has_many :teammates, dependent: :destroy
   has_many :teams, through: :teammates
   has_one :patient
+  has_many :invitations, :class_name => 'Invite', :foreign_key => 'recipient_id'
+  has_many :sent_invites, :class_name => 'Invite', :foreign_key => 'sender_id'
 end
