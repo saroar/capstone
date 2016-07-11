@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  resources :teams do
+  resources :patients do
+    resources :team
     resources :teammates
-    resources :patients
   end
   
   
