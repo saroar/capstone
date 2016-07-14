@@ -1,5 +1,7 @@
-<% @patients.each do |patient| %>
-    <ul>
-    <li><%= link_to patient.name patient %></li>
-    </ul>
+<% if @patients %>
+    <% @patients.each do |patient| %>
+        <ul>
+        <li><%= link_to patient.name patient %></li>
+        </ul>
+    <% end %>
 <% end %>
