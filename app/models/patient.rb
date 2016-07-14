@@ -8,4 +8,5 @@ class Patient < ActiveRecord::Base
     def build_team
         @team = Team.create(name: "#{self.name}'s Team", patient_id: self.id)
     end
+
 end

@@ -17,6 +17,7 @@ class PatientsController < ApplicationController
   
   def create
     @patient = Patient.new(patient_params)
+    @patient.creator_id = current_user.id
     # @.user_id = User.find_by_email(params[:email])
     # authorize @patient
     #auto-create team with user as teammate and team name as @patient.name's team as name
