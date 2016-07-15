@@ -28,14 +28,14 @@ users = User.all
         user: users.sample)
 end
 
-patients = Patient.all
+# patients = Patient.all
 
-patients.each do |patient|
-    Team.create!(
-        name: Faker::Lorem.sentence,
-        patient: patient
-            )
-end
+# patients.each do |patient|
+#     Team.create!(
+#         name: Faker::Lorem.sentence,
+#         patient: patient
+#             )
+# end
 
 teams = Team.all
 
