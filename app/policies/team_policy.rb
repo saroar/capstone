@@ -27,16 +27,9 @@ class TeamPolicy < ApplicationPolicy
     
     class Scope < Scope
         def resolve
-            teams = []
-                if user 
-                #     teams = scope.all
-                # else
-                    teams.each do |team|
-                        teams << team if team.users.include?(user)
-                    end
-                end
-            teams
+            scope.joins(:users).where(users: {id: user.id})
+            #patient_policy scope.joins(users: {id: user.id})
         end
     end
-        
 end
+

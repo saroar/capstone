@@ -4,7 +4,8 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
+    @patient = Patient.find(params[:patient_id])
+    @team = @patient.team
     authorize @team
   end
 

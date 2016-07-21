@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Invite to Join Care Group for <%= @patient.name %></h1>
+    <small>
+      By: <%= @sender %>
+    </small>
+    <p>
+      <%= link_to "Join Group", @invite_url %>
+    </p>
+  </body>
+</html>
