@@ -1,7 +1,6 @@
+<h3> My Patient Teams </h3>
 <% if @patients %>
     <% @patients.each do |patient| %>
-        <ul>
         <li><%= link_to patient.name, patient %></li>
-        </ul>
     <% end %>
 <% end %>

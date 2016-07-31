@@ -1,4 +1,8 @@
 class InvitesController < ApplicationController
+    def new
+        @invite = Invite.new
+    end
+    
     def create
         @invite = Invite.new(invite_params)
         @invite.sender_id = current_user.id

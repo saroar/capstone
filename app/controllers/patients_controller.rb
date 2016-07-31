@@ -1,8 +1,6 @@
 class PatientsController < ApplicationController
   def index
-    # @patients = policy_scope(Patient)
-    # above is ultimate goal, need to write policy_scope for patients
-    @pateints = Patient.all
+    @patients = policy_scope(Patient)
   end
 
   def show

@@ -28,7 +28,6 @@ class TeamPolicy < ApplicationPolicy
     class Scope < Scope
         def resolve
             scope.joins(:users).where(users: {id: user.id})
-            #patient_policy scope.joins(users: {id: user.id})
         end
     end
 end

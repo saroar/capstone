@@ -28,12 +28,12 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    @team = Team.find(params[:id])
+    @team = Team.find(params[:patient_id])
     authorize @team
   end
   
   def update
-    @team = Team.find(params[:id])
+    @team = Team.find(params[:patient_id])
     authorize @team
     if @team.update(team_params)
       flash[:notice] = "#{@team.name}'s information was updated."
