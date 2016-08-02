@@ -6,7 +6,7 @@
   <body>
     <h1>Invite to Join Care Group for <%= @patient.name %></h1>
     <small>
-      By: <%= @sender %>
+      By: <%= @sender.name %>
     </small>
     <p>
       <%= link_to "Join Group", @invite_url %>

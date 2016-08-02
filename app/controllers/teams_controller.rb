@@ -29,6 +29,7 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:patient_id])
+    @invite = Invite.new
     authorize @team
   end
   
