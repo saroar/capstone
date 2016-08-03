@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :teammates
   end
   
+  resources :teams do
+    resources :appointments
+  end
+  
   resources :invites
   
   

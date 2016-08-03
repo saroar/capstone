@@ -9,16 +9,16 @@ class AppointmentsController < ApplicationController
     end
     
     def new
+        @team = Team.find(params[:team_id])
         @appointment = Appointment.new
     end
     
     def create
         @appointment = Appointment.new(appointment_params)
-        @team = params[:id]
+        @team = Team.find(params[:team_id])
         @appointment.team = @team
-        @appointment.patient = @team.patient
         if @appointment.save
-            flash[:notice] = "#{@appointment.patient}'s appointment with #{@appointment.doctor} was saved succesfully."
+            flash[:notice] = "#{@appointment.team.patient}'s appointment with #{@appointment.doctor} was saved succesfully."
             redirect_to [@team]
         else
             flash[:error] = "There was an error saving the appointment. Please try again."
@@ -55,6 +55,6 @@ class AppointmentsController < ApplicationController
     private
     
     def appointment_params
-        params.require(:appiontment).permit(:title, :doctor, :address, :date)
+        params.require(:appointment).permit(:title, :doctor, :address, :date)
     end
 end
