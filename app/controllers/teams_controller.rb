@@ -7,6 +7,9 @@ class TeamsController < ApplicationController
     @patient = Patient.find(params[:patient_id])
     @team = @patient.team
     authorize @team
+    @appointments = @team.appointments
+    @appointments_by_date = @appointments.group_by(&:datetime)
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
   def new
