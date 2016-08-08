@@ -9,6 +9,11 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
+  
+  <div class="field">
+    <%= f.label :timezone %>
+    <%= f.time_zone_select :time_zone %>
+</div>  
 
   <div class="field">
     <%= f.label :password %>
