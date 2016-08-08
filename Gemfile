@@ -33,6 +33,9 @@ gem 'devise'
 #Datepicker
 gem 'bootstrap-datepicker-rails'
 
+#timepicker
+gem 'bootstrap-timepicker-rails'
+
 # tooltips and popovers depend on tether
 # source 'https://rails-assets.org' do
 #   gem 'rails-assets-tether', '>= 1.1.0'
