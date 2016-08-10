@@ -42,4 +42,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'https://capstone-tpalid1.c9users.io' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
+  class Application < Rails::Application
+    config.web_console.whitelisted_ips = '73.149.247.166'
+    config.web_console.whiny_requests = false
+  end
 end

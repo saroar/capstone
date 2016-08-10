@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   
   resources :patients do
-    resource :team
+    resource :team do
+      resources :appointments
+    end
     resources :teammates
   end
   

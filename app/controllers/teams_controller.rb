@@ -6,10 +6,12 @@ class TeamsController < ApplicationController
   def show
     @patient = Patient.find(params[:patient_id])
     @team = @patient.team
-    authorize @team
+    # authorize @team
     @appointments = @team.appointments
-    @appointments_by_date = @appointments.group_by(&:datetime)
-    @date = params[:datetime] ? Date.parse(params[:datetime]) : Date.today
+    @appointments_by_date = @appointments.group_by { |apt| apt.datetime ? apt.datetime.to_date : apt.datetime }
+    puts @appointments_by_date
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    puts @date
   end
 
   def new
