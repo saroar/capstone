@@ -9,11 +9,11 @@
       <% if @appointments_by_date[date] %>
         <ul>
           <% @appointments_by_date[date].each do |appointment| %>
-            <li><%= appointment.title %>: <%= appointment.datetime.strftime('%l:%M %P') %></li>
+            <li><%= appointment.datetime.strftime('%l:%M%P') %> <%= appointment.title %></li>
           <% end %>
         </ul>
       <% end %>
   <% end %>
 </div>
 
-<%= link_to "New Appointment", new_team_appointment_path(@team) %>
+<%= link_to "New Appointment", new_patient_team_appointment_path(@team) %>

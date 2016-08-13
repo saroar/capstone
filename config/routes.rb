@@ -5,12 +5,8 @@ Rails.application.routes.draw do
   resources :patients do
     resource :team do
       resources :appointments
+      resources :teammates
     end
-    resources :teammates
-  end
-  
-  resources :teams do
-    resources :appointments
   end
   
   resources :invites

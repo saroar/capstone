@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
-  attr_accessor :time_zone
-         
   has_many :teammates, dependent: :destroy
   has_many :teams, through: :teammates
   has_many :patients
