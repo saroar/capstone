@@ -25,7 +25,7 @@ users = User.all
         name: Faker::Name.name,
         age: rand(60..100),
         address: Faker::Address.street_address,
-        user: users.sample)
+        account: users.sample)
 end
 
 # patients = Patient.all
