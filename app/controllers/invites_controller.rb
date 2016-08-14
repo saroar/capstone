@@ -11,8 +11,8 @@ class InvitesController < ApplicationController
             if @invite.recipient != nil
                 @user = @invite.recipient
                 InviteMailer.existing_user_invite(@invite).deliver
-                @teammate = Teammate.create(team: @invite.team, user: @user)
-                if @teammate.save
+                @team_membership = TeamMembership.create(team: @invite.team, user: @user)
+                if @team_membership.save
                     flash[:notice] = "#{@user.name} was added to #{@invite.team.name}.  A notifcation email has been sent."
                     redirect_to [@invite.team.patient, @invite.team]     
                 else

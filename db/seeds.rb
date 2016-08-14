@@ -42,7 +42,7 @@ teams = Team.all
 
 teams.each do |team|
     5.times do
-        Teammate.create!(
+        TeamMembership.create!(
             team: team,
             user: users.sample
             )

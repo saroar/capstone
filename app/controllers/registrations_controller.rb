@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
         super
         if @invite
             @user = User.find_by(email: params[:user][:email])
-            Teammate.create(team: @invite.team, user: @user)
+            TeamMembership.create(team: @invite.team, user: @user)
         end
     end
 end
