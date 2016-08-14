@@ -13,6 +13,7 @@ end
         name: "Test#{num}",
         email: "test#{num}@email.com",
         password: "helloworld",
+        time_zone: Faker::Address.time_zone 
         )
     test.skip_confirmation!
     test.save!
@@ -28,14 +29,14 @@ users = User.all
         account: users.sample)
 end
 
-# patients = Patient.all
+patients = Patient.all
 
-# patients.each do |patient|
-#     Team.create!(
-#         name: Faker::Lorem.sentence,
-#         patient: patient
-#             )
-# end
+patients.each do |patient|
+    Team.create!(
+        name: "#{patient.name}'s Team",
+        patient: patient
+            )
+end
 
 teams = Team.all
 
@@ -45,6 +46,18 @@ teams.each do |team|
             team: team,
             user: users.sample
             )
+    end
+end
+
+teams.each do |team|
+    5.times do
+        Appointment.create!(
+            title: Faker::Lorem.words(2),
+            doctor: "Mr. #{Faker::Name.last_name}",
+            datetime: Faker::Time.forward(23, :day),
+            address: Faker::Address.street_address,
+            team: team
+        )
     end
 end
         
