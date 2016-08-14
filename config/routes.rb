@@ -6,10 +6,11 @@ Rails.application.routes.draw do
     resource :team do
       resources :appointments
       resources :teammates
+      resources :invites
     end
   end
   
-  resources :invites
+
   
   
   

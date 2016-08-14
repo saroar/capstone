@@ -7,4 +7,11 @@ class InviteMailer < ApplicationMailer
         @invite_url = invite_url
         mail(to: invite.email)
     end
+    
+    def existing_user_invite(invite)
+        @sender = invite.sender
+        @patient = invite.team.patient
+        @team = invite.team
+        mail(to: invite.email)
+    end
 end
