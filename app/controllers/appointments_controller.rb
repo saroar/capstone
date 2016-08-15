@@ -38,8 +38,7 @@ class AppointmentsController < ApplicationController
     
     def update
         @patient = Patient.find(params[:patient_id])
-        @team = @patient.team
-        @appointment = Appointment.find(params[:id])
+        @appointment = Appointment.find(params[:format])
         if @appointment.update_attributes(appointment_params)
             flash[:notice] = "#{@appointment.team.patient.name}'s appointment has been successfully updated."
             redirect_to patient_team_path
@@ -50,7 +49,8 @@ class AppointmentsController < ApplicationController
     end
     
     def destroy
-        @appointment = Appointment.find(params[:id])
+        @patient = Patient.find(params[:patient_id])
+        @appointment = Appointment.find(params[:format])
         if @appointment.destroy
             flash[:notice] = "#{@appointment.team.patient}'s appointment was deleted."
             redirect_to patient_team_path
