@@ -3,7 +3,7 @@ class Invite < ActiveRecord::Base
     belongs_to :sender, :class_name => 'User'
     belongs_to :recipient, :class_name => 'User'
     before_save :check_user_existence
-    validates :email, :presence => true
+    validates :email, :presence => true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
     validates :sender_id, :presence => true
     validates :team_id, :presence => true
 
