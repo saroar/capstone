@@ -62,6 +62,20 @@ class AppointmentsController < ApplicationController
             render :show
         end
     end
+    
+    def get_autocomplete_items(parameters)
+        items = active_record_get_autocomplete_items(parameters)
+        # items = items.where(searchable: true)
+        # @patient = Patient.find(params[:patient_id])
+        # @team = @patient.team
+        # items = @team.users
+        @team = Team.find(params[:team_id])
+        items = items.where(:id => @team.team_memberships.pluck(:user_id))
+        # items = super(parameters)
+        # items = items.where(:user_id => .id)
+        # super(parameters).where(:institution_id => params[:institution_id])
+        #users where team.users includes user
+    end
             
     private
     
