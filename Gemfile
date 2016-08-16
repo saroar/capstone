@@ -36,6 +36,11 @@ gem 'bootstrap-datepicker-rails'
 #timepicker
 gem 'bootstrap-timepicker-rails'
 
+#autocomplete
+gem 'rails-jquery-autocomplete'
+#needed for autocomplete
+gem 'jquery-ui-rails'
+
 # tooltips and popovers depend on tether
 # source 'https://rails-assets.org' do
 #   gem 'rails-assets-tether', '>= 1.1.0'

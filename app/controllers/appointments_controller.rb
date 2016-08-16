@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+    autocomplete :user, :email
     # def index
     #     @team = Team.find(params[:id])
     #     @appointments = @team.appointments
@@ -21,6 +22,7 @@ class AppointmentsController < ApplicationController
         @patient = Patient.find(params[:patient_id])
         @team = @patient.team
         @appointment.team = @team
+        @appointment.user = User.find_by_email(params[:user_email])
         if @appointment.save
             flash[:notice] = "#{@appointment.team.patient}'s appointment with #{@appointment.doctor} was saved succesfully."
             redirect_to [@patient, @team]
@@ -39,6 +41,7 @@ class AppointmentsController < ApplicationController
     def update
         @patient = Patient.find(params[:patient_id])
         @appointment = Appointment.find(params[:format])
+        @appointment.user = User.find_by_email(params[:user_email])
         if @appointment.update_attributes(appointment_params)
             flash[:notice] = "#{@appointment.team.patient.name}'s appointment has been successfully updated."
             redirect_to patient_team_path

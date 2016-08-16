@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   
   resources :patients do
     resource :team do
-      resources :appointments
+      resources :appointments do
+        get :autocomplete_user_email, on: :collection
+      end
       resources :team_memberships
       resources :invites
     end
