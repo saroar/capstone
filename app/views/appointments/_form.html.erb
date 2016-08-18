@@ -13,8 +13,13 @@
     </div>
     
     <div class="form-group">
-        <%= f.label :assigned_team_member %>
+        <%= f.label :suggested_team_member %>
         <%= autocomplete_field_tag :user_email, '', autocomplete_user_email_patient_team_appointments_path(:team_id=>@team.id.to_s) %>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label :assign_appointment_to_myself %>
+        <%= check_box_tag :assign_appointment_to_myself %>
     </div>
     
      <div class="form-group">

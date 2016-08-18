@@ -7,7 +7,7 @@
       <% if @appointments_by_date[date] %>
         <ul>
           <% @appointments_by_date[date].each do |appointment| %>
-            <div class="<%= 'unassigned' if appointment.user == nil %>">
+            <div class="<%= 'unassigned' if appointment.assigned_user == nil && appointment.suggested_user == nil %>">
               <li><%= link_to "#{appointment.datetime.strftime('%l:%M%P')} :  #{appointment.title}", patient_team_appointment_path(@team, appointment) %></li>
             </div>
           <% end %>

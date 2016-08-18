@@ -22,7 +22,8 @@ class AppointmentsController < ApplicationController
         @patient = Patient.find(params[:patient_id])
         @team = @patient.team
         @appointment.team = @team
-        @appointment.user = User.find_by_email(params[:user_email])
+        @appointment.suggested_user = User.find_by_email(params[:user_email])
+        @appointment.assigned_user = current_user if @appointment.assigned_user == 1
         if @appointment.save
             flash[:notice] = "#{@appointment.team.patient}'s appointment with #{@appointment.doctor} was saved succesfully."
             redirect_to [@patient, @team]
@@ -41,7 +42,7 @@ class AppointmentsController < ApplicationController
     def update
         @patient = Patient.find(params[:patient_id])
         @appointment = Appointment.find(params[:format])
-        @appointment.user = User.find_by_email(params[:user_email])
+        @appointment.suggested_user = User.find_by_email(params[:user_email])
         if @appointment.update_attributes(appointment_params)
             flash[:notice] = "#{@appointment.team.patient.name}'s appointment has been successfully updated."
             redirect_to patient_team_path
@@ -54,6 +55,7 @@ class AppointmentsController < ApplicationController
     def destroy
         @patient = Patient.find(params[:patient_id])
         @appointment = Appointment.find(params[:format])
+        @appointment.assigned_user = current_user if @appointment.assigned_user == 1
         if @appointment.destroy
             flash[:notice] = "#{@appointment.team.patient}'s appointment was deleted."
             redirect_to patient_team_path

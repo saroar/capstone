@@ -11,21 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815202247) do
+ActiveRecord::Schema.define(version: 20160817214432) do
 
   create_table "appointments", force: :cascade do |t|
     t.string   "title"
     t.string   "doctor"
     t.string   "address"
     t.datetime "datetime"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "team_id"
-    t.integer  "user_id"
+    t.integer  "assigned_user_id"
+    t.integer  "suggested_user_id"
   end
 
+  add_index "appointments", ["assigned_user_id"], name: "index_appointments_on_assigned_user_id"
   add_index "appointments", ["team_id"], name: "index_appointments_on_team_id"
-  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id"
 
   create_table "invites", force: :cascade do |t|
     t.string   "email"
