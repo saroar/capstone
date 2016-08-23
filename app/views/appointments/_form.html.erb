@@ -1,4 +1,4 @@
-<%= form_for [@patient, @team, @appointment] do |f| %>
+<%= form_for [@patient, @patient.team, @appointment] do |f| %>
 
     <div class='form-group'>
         <%= f.label :title %></br>
@@ -14,7 +14,7 @@
     
     <div class="form-group">
         <%= f.label :suggested_team_member %>
-        <%= autocomplete_field_tag :user_email, '', autocomplete_user_email_patient_team_appointments_path(:team_id=>@team.id.to_s) %>
+        <%= collection_select :appointment, :suggested_user_id, @patient.users, :id, :email %>
     </div>
     
     <div class="form-group">

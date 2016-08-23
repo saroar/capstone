@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817214432) do
+ActiveRecord::Schema.define(version: 20160823144934) do
 
   create_table "appointments", force: :cascade do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160817214432) do
     t.integer  "team_id"
     t.integer  "assigned_user_id"
     t.integer  "suggested_user_id"
+    t.integer  "creating_user_id"
   end
 
   add_index "appointments", ["assigned_user_id"], name: "index_appointments_on_assigned_user_id"
