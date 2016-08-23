@@ -7,5 +7,5 @@
 <p>Suggested User: <%= @appointment.suggested_user ? @appointment.suggested_user.email : '' %></p>
 
 <%= link_to "Edit Appointment", edit_patient_team_appointment_path, class: "btn btn-success" %>
-<%= link_to "Delete Appointment", [@patient, @team, @appointment], method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete #{@appointment.title}?" } %>
+<%= link_to "Delete Appointment", [@patient, :team, @appointment], method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete #{@appointment.title}?" } %>
 <p><%= link_to "Back to Team Calendar", patient_team_path %></p>
