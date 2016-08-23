@@ -14,7 +14,7 @@
     
     <div class="form-group">
         <%= f.label :suggested_team_member %>
-        <%= collection_select :appointment, :suggested_user_id, @patient.users, :id, :email %>
+        <%= collection_select :appointment, :suggested_user_id, @patient.users, :id, :email, :include_blank => true %>
     </div>
     
     <div class="form-group">
